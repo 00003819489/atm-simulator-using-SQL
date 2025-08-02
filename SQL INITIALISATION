@@ -1,0 +1,23 @@
+import sqlite3
+
+conn = sqlite3.connect("atm.db")
+cursor = conn.cursor()
+
+# Create table
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS users (
+    card_number VARCHAR(16),
+    pin VARCHAR(4),
+    balance INT
+)
+""")
+
+# Insert users with integer balances
+cursor.execute("INSERT INTO users VALUES ('9400011666', '6060', 5000)")
+cursor.execute("INSERT INTO users VALUES ('9400511666', '7079', 5565000)")
+cursor.execute("INSERT INTO users VALUES ('9400611666', '2006', 523454000)")
+cursor.execute("INSERT INTO users VALUES ('9746101807', '4321', 534000)")
+cursor.execute("INSERT INTO users VALUES ('9442411666', '6666', 15000)")
+
+conn.commit()
+conn.close()
