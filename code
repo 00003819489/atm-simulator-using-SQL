@@ -1,8 +1,21 @@
 import sqlite3
-conn=sqlite3.connect("atm.db")
-cursor=conn.cursor()
-print("Select the operation u need to perform")
-print("check balance")
-print("withdraw money")
-print("deposit money")
-print("add account")
+
+conn = sqlite3.connect("atm.db")
+cursor = conn.cursor()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS users (
+    card_number TEXT PRIMARY KEY,
+    pin TEXT NOT NULL,
+    balance INTEGER DEFAULT 0
+)
+""")
+
+cursor.execute("INSERT INTO users VALUES ('9400011666', '6060', 5000)")
+cursor.execute("INSERT INTO users VALUES ('9400511666', '7079', 5565000)")
+cursor.execute("INSERT INTO users VALUES ('9400611666', '2006', 523454000)")
+cursor.execute("INSERT INTO users VALUES ('9746101807', '4321', 534000)")
+cursor.execute("INSERT INTO users VALUES ('9442411666', '6666', 15000)")
+
+conn.commit()
+conn.close()
