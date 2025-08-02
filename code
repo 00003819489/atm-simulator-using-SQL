@@ -1,0 +1,8 @@
+import sqlite3
+conn=sqlite3.connect("atm.db")
+cursor=conn.cursor()
+print("Select the operation u need to perform")
+print("check balance")
+print("withdraw money")
+print("deposit money")
+print("add account")
